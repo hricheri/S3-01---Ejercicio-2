@@ -1,17 +1,13 @@
 <?php
 
+require_once "PaymentGatewayInterface.php";
 require_once "BankTransfer.php";
 require_once "PaymentProcessor.php";
-require_once "PaypalPaymentGateway.php";
+require_once "PayPalPaymentGateway.php";
 require_once "StripePaymentGateway.php";
 
-$paypalGateway= new PayPalPaymentGateway();
-$Processor1 = new PaymentProcessor($paypalGateway);
+$processor = new PaymentProcessor(new StripePaymentGateway());
+echo $processor->procesarPago(100) . "\n";
 
-$stripeGateway = new StripePaymentGateway();
-$Processor2 = new PaymentProcessor($stripeGateway);
-
-echo $Processor1->processPayment(100);
-echo $Processor2->processPayment(50);
-
-?>
+$processor2 = new PaymentProcessor(new BankTransfer());
+echo $processor2->procesarPago(50) . "\n";

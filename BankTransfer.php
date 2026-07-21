@@ -1,7 +1,9 @@
 <?php
 
-interface BankTransfer {
-    public function transfer(float $amount): string;
+class BankTransfer implements PaymentGatewayInterface
+{
+    public function sendPayment(float $amount): string
+    {
+        return "{$amount} bank transfer done";
+    }
 }
-
-?>

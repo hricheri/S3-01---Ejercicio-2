@@ -1,15 +1,16 @@
 <?php
 
-class PaymentProcessor {
-    private BankTransfer $bankTransfer;
+class PaymentProcessor
+{
+    protected PaymentGatewayInterface $gateway;
 
-    public function __construct(BankTransfer $bankTransfer) {
-        $this->bankTransfer = $bankTransfer;
+    public function __construct(PaymentGatewayInterface $gateway)
+    {
+        $this->gateway = $gateway;
     }
 
-    public function processPayment(float $amount): string {
-        return $this->bankTransfer->transfer($amount);
+    public function procesarPago(float $cantidad): string
+    {
+        return $this->gateway->sendPayment($cantidad);
     }
 }
-
-?>

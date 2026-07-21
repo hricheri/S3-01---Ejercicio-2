@@ -1,9 +1,9 @@
 <?php
 
-class PayPalPaymentGateway implements BankTransfer {
-    public function transfer(float $amount): string {
-        return "Processed PayPal payment of \${$amount}";
+class PayPalPaymentGateway implements PaymentGatewayInterface
+{
+    public function sendPayment(float $amount): string
+    {
+        return "{$amount} payment processed by PayPal";
     }
 }
-
-?>

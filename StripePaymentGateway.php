@@ -1,9 +1,9 @@
 <?php
 
-class StripePaymentGateway implements BankTransfer {
-    public function transfer(float $amount): string {
-        return "Processed Stripe payment of \${$amount}";
+class StripePaymentGateway implements PaymentGatewayInterface
+{
+    public function sendPayment(float $amount): string
+    {
+        return "{$amount} payment processed with Stripe";
     }
 }
-
-?>
