@@ -3,7 +3,7 @@
 require_once "PaymentGatewayInterface.php";
 require_once "BankTransfer.php";
 require_once "PaymentProcessor.php";
-require_once "PayPalPaymentGateway";
+require_once "PayPalPaymentGateway.php";
 require_once "StripePaymentGateway.php";
 
 $processor = new PaymentProcessor(new StripePaymentGateway());
